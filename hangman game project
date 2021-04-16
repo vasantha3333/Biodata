@@ -1,0 +1,98 @@
+import random
+
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
+
+end_of_game = False
+word_list = ["apple", "potato","spinach","banana", "strawberry","pineapple","lemon","brocoli","custard","jackfruit","tomato","blueberries","grapes","drumstick","onion","bittergourd","orange","guava","watermelon","corn","promogranate","bottlegourd","carrot","beetroot"]
+chosen_word = random.choice(word_list)
+word_length = len(chosen_word)
+lives=int('6')
+print(''' _                                             
+| |                                            
+| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
+| '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+| | | | (_| | | | | (_| | | | | | | (_| | | | |
+|_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                    __/ |                      
+                   |___/     ''')
+print("\nWelcome to hangman game...\n")
+
+print(stages[lives])
+display = []
+for _ in range(word_length):
+    display += "_"
+while not end_of_game:
+    guess = input("\nGuess a letter: ").lower()
+    if guess in display:
+       print(f"\nYou've already guessed {guess}\n")
+    for i in range(0,len(chosen_word)):     
+       if guess==chosen_word[i]:
+          display[i]=guess 
+    if guess not in chosen_word:
+       lives-=1
+       print(f"You guessed {guess},that is not in the word,you lost a life.\n")
+       print(stages[lives])
+    print(f"\n{' '.join(display)}")
+    if "_" not in display:
+        end_of_game = True
+        print("\nYou won the game....🤩")
+    elif lives<=0:
+        end_of_game=True
+        print(f"\nThe right word is....{chosen_word}")
+        print("\nsorry 😧...You Lost the game.")
+    
