@@ -1,0 +1,78 @@
+import random
+from replit import clear 
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+complete=True
+while complete:
+  choice=input("choose 0 for rock ,1 for paper ,2 for scissors: ")
+  if(choice=="0"):
+    print(rock)
+    print("computer choosed:")
+    pick=random.randint(0,2)
+    if(pick==0):
+      print("Rock: "+rock)
+      print("neither wins")
+    elif(pick==1):
+      print("Paper"+paper)
+      print("You lost!")
+    else:
+      print("Scissors: "+scissors)
+      print("You Win!")
+  elif (choice=="1"):
+    print(paper)
+    print("computer choosed:")
+    pick=random.randint(0,2)
+    if(pick==0):
+      print("Rock: "+rock)
+      print("You Win!")
+    elif(pick==1):
+      print("Paper"+paper)
+      print("Neither Wins!")
+    else:
+      print("Scissors: "+scissors)
+      print("You Lost!")
+  elif choice=="2":
+    print(scissors)
+    print("computer choosed:")
+    pick=random.randint(0,2)
+    if(pick==0):
+      print("Rock: "+rock)
+      print("You Lost")
+    elif(pick==1):
+      print("Paper"+paper)
+      print("You Win!")
+    else:
+      print("Scissors: "+scissors)
+      print("Neither wins!")
+  else:
+    print("Enter a valid Input")
+  play=input("\nDo you want to play again ? Type 'yes' or 'no' : ")
+  if play=="no":
+    complete=False
+    print("\nGame Over")
+  else:
+    clear()
