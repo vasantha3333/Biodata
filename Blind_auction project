@@ -1,0 +1,18 @@
+from replit import clear
+from art import logo
+print(logo)
+print("Welcome to Secret Auction Program....\n")
+dictionary={}
+complete=True
+while complete:
+  user_name=input("What is your name ?: ")
+  bid_amount=input("What's your bid ?: $")
+  dictionary[user_name]=bid_amount
+  info=input("Are there any other persons to bid? Type 'yes' or 'no': ")
+  if info=='yes':
+    clear()
+  else:
+    clear()
+    max_key=max(dictionary,key=dictionary.get)
+    print(f"The winner is {max_key} with a bid of {dictionary[max_key]}")
+    complete=False
