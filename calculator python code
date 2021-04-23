@@ -1,0 +1,51 @@
+def add(n1,n2):
+  return n1+n2
+def subtract(n1,n2):
+  return n1-n2
+def mul(n1,n2):  
+  return n1*n2
+def divide(n1,n2):
+  return n1/n2
+logo = """
+ _____________________
+|  _________________  |
+| | Pythonista   0. | |  .----------------.  .----------------.  .----------------.  .----------------. 
+| |_________________| | | .--------------. || .--------------. || .--------------. || .--------------. |
+|  ___ ___ ___   ___  | | |     ______   | || |      __      | || |   _____      | || |     ______   | |
+| | 7 | 8 | 9 | | + | | | |   .' ___  |  | || |     /  \     | || |  |_   _|     | || |   .' ___  |  | |
+| |___|___|___| |___| | | |  / .'   \_|  | || |    / /\ \    | || |    | |       | || |  / .'   \_|  | |
+| | 4 | 5 | 6 | | - | | | |  | |         | || |   / ____ \   | || |    | |   _   | || |  | |         | |
+| |___|___|___| |___| | | |  \ `.___.'\  | || | _/ /    \ \_ | || |   _| |__/ |  | || |  \ `.___.'\  | |
+| | 1 | 2 | 3 | | x | | | |   `._____.'  | || ||____|  |____|| || |  |________|  | || |   `._____.'  | |
+| |___|___|___| |___| | | |              | || |              | || |              | || |              | |
+| | . | 0 | = | | / | | | '--------------' || '--------------' || '--------------' || '--------------' |
+| |___|___|___| |___| |  '----------------'  '----------------'  '----------------'  '----------------' 
+|_____________________|
+"""
+print(logo)
+operations={'+':add,'-':subtract,'*':mul,'/':divide}
+def calculate():
+  n1=float(input("\nEnter the first number: "))
+  for i in operations:
+    print(i)
+  op=input("Pick an operation from above options: ")
+  n2=float(input("Enter the second number: "))
+  calculation=operations[op]
+  result=calculation(n1,n2)
+  print(f"{n1} {op} {n2} = {result}")
+  do_calculation=True
+  while do_calculation:
+    value=input(f"\nType 'y' to continue with {result}\nType 'n' to start a new caluculation\nType 'e' to exit: ")
+    if value=="n":
+      do_calculation=False
+      calculate()
+    elif value=="e":
+      do_calculation=False
+    else:
+      op2=input("\nPick another operation: ")
+      num3=float(input("What's the next number? "))
+      calculation=operations[op2]
+      res=calculation(result,num3)
+      print(f"{result} {op2} {num3} = {res}")
+      result=res
+calculate()
