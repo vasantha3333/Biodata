@@ -1,0 +1,48 @@
+import random
+from art import logo
+print(logo)
+print("Welocome to Number Guessing Game...")
+print("Choose the number between 1 to 100 ")
+levels=input("Choose a difficulty level 'easy' or 'hard' : ")
+number=random.randint(1,101)
+print(number)
+def level():
+   if levels=='easy':
+     easy_level()
+   else:
+      hard_level()
+def easy_level():
+  num=10
+  while num>0 :
+      print(f"You have {num} attempts to guess the number")
+      guess=int(input("Make a guess: "))
+      guess_number(guess)
+      if guess==number:
+        num=0;
+      elif (num >0):
+        print("Guess again.")
+      else:
+        print("You ran out of moves,you lost...")
+      num-=1
+def hard_level():
+  num=5
+  while num>0 :
+      print(f"You have {num} attempts to guess the number")
+      guess=int(input("Make a guess: "))
+      guess_number(guess)
+      if guess==number:
+        num=0;
+      elif (num >0):
+        print("Guess again.")
+      else:
+        print("You ran out of moves,you lost...")
+      num-=1
+def guess_number(guess):  
+    if(guess==number):
+      print(f"You got it! The answer is {guess}")
+    elif guess>number:
+      print("Too high")
+    else:
+      print("Too low")
+    
+level()
